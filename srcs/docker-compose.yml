@@ -10,6 +10,7 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
+    image: wordpress
     env_file:
       - ./.env
     volumes:
@@ -25,6 +26,7 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx
+    image: nginx
     ports:
       - "443:443"
     volumes:
@@ -40,6 +42,7 @@ services:
     env_file:
       - ./.env
     build: ./requirements/mariadb
+    image: mariadb
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -73,4 +76,4 @@ volumes:
 
 networks:
   inception:
-    driver: bridge
+    name: inception

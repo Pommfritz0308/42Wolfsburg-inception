@@ -19,9 +19,9 @@ COPY ./conf/php-fpm.conf /etc/php/7.4/fpm/pool.d/www.conf
 
 RUN mkdir /run/php
 
-COPY ./tools/script.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/script.sh
-ENTRYPOINT ["/usr/local/bin/script.sh"]
+COPY ./tools/setup_wp.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/setup_wp.sh
+ENTRYPOINT ["/usr/local/bin/setup_wp.sh"]
 
 WORKDIR /var/www/html/
 
